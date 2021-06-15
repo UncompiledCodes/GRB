@@ -17,5 +17,5 @@ GRB stands for Gamma-Ray Burst.
 * **Utils** : The directory in which all code based utilities and tools exist.
 
     It currently contains:
-    * **txt2csv** : This python module coverts a text file to csv.
+    * **txt2csv** : This python module converts a text file to csv.
     * **lc python file**
