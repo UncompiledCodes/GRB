@@ -2,6 +2,11 @@
 
 GRB stands for Gamma-Ray Burst.
 
+* [Directories](https://github.com/Perun21/GRB#directories)
+* [Requirements](https://github.com/Perun21/GRB#requirements)
+* [Repository Managment](https://github.com/Perun21/GRB#repository-managment) 
+    * [Commit message convention](https://github.com/Perun21/GRB#type-must-be-one-of-the-following-mentioned-below)
+
 ## **Directories**
 
 * **Docs** : The directory in which all the documents relating to the project exist.
@@ -37,7 +42,7 @@ For each new package you add to the project, add the name of the package to the 
     * Push your branch and make a new pull request.
     * Pull requests will be merged after reviewing.
 
-* Images and Design files
+* Images and Document files
     * There is no need to create new branches for pushing these kind of files.
 
     * If you use the upload method on github website, remember to change the defualt commit message.
