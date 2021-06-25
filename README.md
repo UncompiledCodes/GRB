@@ -26,6 +26,14 @@ GRB stands for Gamma-Ray Burst.
   * **lc python file**
   * **Random Forest for SDSS** : Random Forest regression algorithm for estimating photometric redshift of galaxies.
 
+## **Enviroment**
+
+Install python `virtualenv` package using `pip` : `pip install virtualenv` .
+
+Create a virtual enviroment using :`python -m venv env` .
+
+Install the requirements using : `pip install -r requirements.txt` .
+
 ## **Requirements**
 
 For each new package you add to the project, add the name of the package to the `requirements.in` file and use the command below and the `requirements.txt` file will be updated:
