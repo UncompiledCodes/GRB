@@ -17,7 +17,7 @@ targets = data['redshift']
 
 # Training the Random Forest Regression model on the whole dataset
 from sklearn.ensemble import RandomForestRegressor
-regressor = RandomForestRegressor(n_estimators = 100, random_state = 0)
+regressor = RandomForestRegressor(n_estimators = 10, random_state = 0)
 regressor.fit(features, targets)
 
 # Predicting a new result
@@ -25,7 +25,14 @@ from scipy.sparse import csr_matrix
 # A = csr_matrix([[features[:]]])
 # x=np.array(0.31476,0.0571,0.28991,0.07192)
 y_pred=regressor.predict(features)
-
+of=[]
+for i in range(0,49999):
+    of.append(np.abs(y_pred[i] - targets[i]))
+count=0    
+for j in of:
+    if(j>0.02):
+        count+=1
+        
 # Write a function that calculates the median of the differences between our predicted and actual values
 def median_diff(predicted, actual):
   return np.median(np.abs(y_pred[:] - targets[:]))
