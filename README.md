@@ -24,7 +24,7 @@ GRB stands for Gamma-Ray Burst.
     It currently contains:
   * **txt2csv** : This python module converts a text file to csv.
   * **lc python file**
-    * **Random Forest for SDSS** : Random Forest regression algorithm for estimating photometric redshift of galaxies.
+  * **Random Forest for SDSS** : Random Forest regression algorithm for estimating photometric redshift of galaxies.
 
 ## **Requirements**
 
