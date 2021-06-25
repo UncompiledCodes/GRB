@@ -3,6 +3,7 @@
 GRB stands for Gamma-Ray Burst.
 
 * [Directories](https://github.com/Perun21/GRB#directories)
+* [Enviroment](https://github.com/Perun21/GRB#enviroment)
 * [Requirements](https://github.com/Perun21/GRB#requirements)
 * [Repository Managment](https://github.com/Perun21/GRB#repository-managment)
   * [Commit message convention](https://github.com/Perun21/GRB#type-must-be-one-of-the-following-mentioned-below)
