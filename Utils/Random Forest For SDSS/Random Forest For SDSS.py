@@ -14,34 +14,32 @@ features[:, 1] = data['g'] - data['r']
 features[:, 2] = data['r'] - data['i']
 features[:, 3] = data['i'] - data['z']
 targets = data['redshift']
+ #Splitting the dataset into the Training and Test set
+from sklearn.model_selection import train_test_split
+features_train, features_test, targets_train, targets_test = train_test_split(features,targets,test_size = 0.2, random_state = 0)
 
 # Training the Random Forest Regression model on the whole dataset
 from sklearn.ensemble import RandomForestRegressor
 regressor = RandomForestRegressor(n_estimators = 10, random_state = 0)
-regressor.fit(features, targets)
+regressor.fit(features_train, targets_train)
 
 # Predicting a new result
 from scipy.sparse import csr_matrix
 # A = csr_matrix([[features[:]]])
 # x=np.array(0.31476,0.0571,0.28991,0.07192)
-y_pred=regressor.predict(features)
-of=[]
-for i in range(0,49999):
-    of.append(np.abs(y_pred[i] - targets[i]))
-count=0    
-for j in of:
-    if(j>0.02):
-        count+=1
+y_pred=regressor.predict(features_test)
+
+      
         
-# Write a function that calculates the median of the differences between our predicted and actual values
+#Write a function that calculates the median of the differences between our predicted and actual values
 def median_diff(predicted, actual):
-  return np.median(np.abs(y_pred[:] - targets[:]))
-diff = median_diff(y_pred, targets)
+  return np.median(np.abs(y_pred[:] - targets_test[:]))
+diff = median_diff(y_pred, targets_test)
 print("Median difference: {:0.3f}".format(diff))
 
 # plot the results to see how well our model looks
-plt.scatter(targets, y_pred, s=0.4)
-plt.xlim((0, targets.max()))
+plt.scatter(targets_test, y_pred, s=0.4)
+plt.xlim((0, targets_test.max()))
 plt.ylim((0, y_pred.max()))
 plt.xlabel('Measured Redshift')
 plt.ylabel('Predicted Redshift')
