@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Importing the dataset
-data = np.load('F:\Online Courses\Data-driven Astronomy\WEEK 5\Python practice\sdss_galaxy_colors.npy')
+data = np.load('sdss_galaxy_colors.npy')
 
 features = np.zeros(shape=(len(data), 4))
 features[:, 0] = data['u'] - data['g']
@@ -31,7 +31,7 @@ y_pred=regressor.predict(features_test)
 
       
         
-#Write a function that calculates the median of the differences between our predicted and actual values
+# Write a function that calculates the median of the differences between our predicted and actual values
 def median_diff(predicted, actual):
   return np.median(np.abs(y_pred[:] - targets_test[:]))
 diff = median_diff(y_pred, targets_test)
@@ -55,3 +55,7 @@ plt.title('Truth or Bluff (Random Forest Regression)')
 plt.xlabel('Position level')
 plt.ylabel('Salary')
 plt.show()'''
+
+
+def main_forest():
+  return y_pred-targets_test
