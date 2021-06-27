@@ -14,7 +14,7 @@ features[:, 3] = data['i'] - data['z']
 targets = data['redshift']
 #Splitting the dataset into the Training and Test set
 from sklearn.model_selection import train_test_split
-features_train, features_test, targets_train, targets_test = train_test_split(features,targets,test_size = 0.2,  random_state = 0
+features_train, features_test, targets_train, targets_test = train_test_split(features,targets,test_size = 0.2,  random_state = 0)
 # initialize model
 regressor = DecisionTreeRegressor(max_depth=(19),random_state = 0)
 regressor.fit(features_train, targets_train)
@@ -38,5 +38,5 @@ plt.xlim((0, targets_test.max()))
 plt.ylim((0, y_pred.max()))
 plt.xlabel('Measured Redshift')
 plt.ylabel('Predicted Redshift')
-plt.savefig('RF-Result', dpi=1200)
+plt.savefig('treeResult', dpi=1200)
 plt.show()
