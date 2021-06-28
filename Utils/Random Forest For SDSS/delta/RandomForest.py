@@ -39,7 +39,7 @@ def plot_forest(data):
     plt.ylim((0, y_pred.max()))
     plt.xlabel("Measured Redshift")
     plt.ylabel("Predicted Redshift")
-    plt.savefig("Forest_Result", dpi=1200)
+    plt.savefig("plot/Forest_Result", dpi=1200)
     plt.show()
 
 

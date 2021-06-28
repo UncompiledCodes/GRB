@@ -13,7 +13,7 @@ def main(data):
     plt.ylim((0, forest.max()))
     plt.xlabel("Tree delta Z")
     plt.ylabel("Forest delta Z")
-    plt.savefig("deltaZ", dpi=1200)
+    plt.savefig("plot/deltaZ", dpi=1200)
     plt.xlim([0, 1])
     plt.ylim([0, 1])
     plt.show()
