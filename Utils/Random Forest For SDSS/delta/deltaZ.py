@@ -23,5 +23,5 @@ if __name__ == "__main__":
     try:
         data = np.load(sys.argv[1])
     except:
-        data = np.load("sdss_galaxy_colors.npy")
+        data = np.load("data\sdss_galaxy_colors.npy")
     main(data)
