@@ -24,7 +24,7 @@ features_train, features_test, targets_train, targets_test = train_test_split(
 # Training the Random Forest Regression model on the whole dataset
 from sklearn.ensemble import RandomForestRegressor
 
-regressor = RandomForestRegressor(n_estimators=19, random_state=0)
+regressor = RandomForestRegressor(n_estimators=10, random_state=0)
 regressor.fit(features_train, targets_train)
 
 # Predicting a new result
@@ -34,6 +34,28 @@ from scipy.sparse import csr_matrix
 # x=np.array(0.31476,0.0571,0.28991,0.07192)
 y_pred = regressor.predict(features_test)
 
+from sklearn.model_selection import cross_val_score
+accuracies = cross_val_score(estimator = regressor, X = features_train, y = targets_train, cv = 10)
+print("Accuracy: {:.2f} %".format(accuracies.mean()*100))
+print("Standard Deviation: {:.2f} %".format(accuracies.std()*100))
+
+# Applying Grid Search to find the best model and the best parameters
+from sklearn.model_selection import GridSearchCV
+
+param_grid = {
+    'bootstrap': [True],
+    'max_depth': [80, 90, 100, 110],
+    'max_features': [2, 3],
+    'min_samples_leaf': [3, 4, 5],
+    'min_samples_split': [8, 10, 12],
+    'n_estimators': [5, 10, 20, 30, 40, 50, 75]
+}
+#
+# Instantiate the grid search model
+grid_search = GridSearchCV(estimator = regressor, param_grid = param_grid, 
+                          cv = 10, n_jobs = -1, verbose = 2)
+
+best_grid = grid_search.best_estimator_
 
 # Write a function that calculates the median of the differences between our predicted and actual values
 def median_diff(predicted, actual):
