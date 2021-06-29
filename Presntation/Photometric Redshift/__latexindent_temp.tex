@@ -19,12 +19,14 @@
 
 \mode<presentation> {
 
+
+
 % The Beamer class comes with a number of default slide themes
 % which change the colors and layouts of slides. Below this is a list
 % of all the themes, uncomment each in turn to see what they look like.
 
 %\usetheme{default}
-%\usetheme{AnnArbor}
+\usetheme{AnnArbor}
 %\usetheme{Antibes}
 %\usetheme{Bergen}
 %\usetheme{Berkeley}
@@ -40,7 +42,7 @@
 %\usetheme{Ilmenau}
 %\usetheme{JuanLesPins}
 %\usetheme{Luebeck}
-\usetheme{Madrid}
+% \usetheme{Madrid}
 %\usetheme{Malmoe}
 %\usetheme{Marburg}
 %\usetheme{Montpellier}
@@ -56,7 +58,7 @@
 % changes the colors of your current slide theme.
 
 %\usecolortheme{albatross}
-%\usecolortheme{beaver}
+\usecolortheme{beaver}
 %\usecolortheme{beetle}
 %\usecolortheme{crane}
 %\usecolortheme{dolphin}
@@ -64,7 +66,7 @@
 %\usecolortheme{fly}
 %\usecolortheme{lily}
 %\usecolortheme{orchid}
-\usecolortheme{rose}
+%\usecolortheme{rose}
 %\usecolortheme{seagull}
 %\usecolortheme{seahorse}
 %\usecolortheme{whale}
@@ -83,15 +85,15 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Photometric Redshifts]{Estimating the photometric redshifts of galaxies using regression techniques} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Photometric Redshifts]{Estimating the Photometric Redshifts of Galaxies Using Regression Techniques} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author[Momtaz, Salimi]{ A. Momtaz, M. H. Salimi}
+\author[Momtaz, Salimi, Shakeri]{ A. Momtaz, M. H. Salimi, S.Shakeri}
 %\rel{ Supervised by: P. Sahebsara, PhD.} % Your name
 \institute[IUT] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
 Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Iran. \\ % Your institution for the title page
 \medskip
-\textit{a.momtaz98@gmail.com\\themhsalimi@gmail.com} % Your email address
+\textit{aidinmomtaz@ph.iut.ac.ir\\mhsalimi@ph.iut.ac.ir\\s.shakeri@iut.ac.ir} % Your email address
 }
 \date{July 7, 2021} % Date, can be changed to a custom date
 \setbeamertemplate{caption}[numbered]
@@ -113,12 +115,94 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
+%   Introduction
+%----------------------------------------------------------------------------------------
+\section{Introduction}
+\subsection{Motivation}
+\begin{frame}
+    \begin{columns}[onlytextwidth]
+    \begin{column}{.45\textwidth}
+        \begin{figure}
+            \includegraphics[width=\textwidth]{img/sdss_galaxy_map.jpg}
+            \caption*{SDSS Galaxy Map}
+        \end{figure}
+    \end{column}
+    \hfill
+    \begin{column}{.45\textwidth}
+    \begin{itemize}
+        \item Possibility of Obtaining a Spectrum
+        \item Sophisticated ML Algorithm
+        \item Dark Energy and Dark Matter
+    \end{itemize}
+    \end{column}
+    \end{columns}
+    \end{frame}
+\subsection{Spectroscopic and Photometric Redshifts}
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.35]{img/galaxy_spectrum.png}
+    \end{figure}
+    \begin{equation}
+        \lambda_{obs} = (1+z)\lambda_{em}
+    \end{equation}
+    \end{frame}
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.25]{img/sdss_plot.png}
+    \end{figure}
+    \begin{equation}
+        u=m_{\text {ref }}-2.5 \log {10}\left[\int_{0}^{\infty} F(\lambda) S(\lambda) d \lambda\right]
+    \end{equation}
+    \end{frame}
+\subsection{Machine Learning}
+\begin{frame}
+    \begin{description}
+        \item[Decision Tree] \hfill \\ Decision trees map a set of input features to their corresponding output targets. This is done through a series of individual decisions where each decision represents a node (or branching) of the tree. 
+        \\[0.2in]
+        \pause
+        \item[Random Forest] \hfill \\ Random forests are an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time. 
+    \end{description}
+    % \begin{itemize}[<+->]
+    %     \item Decision Tree
+    %     \item Random Forest
+    % \end{itemize}
+
+    % \begin{block}{}
+    %     \only<1>{Decision trees map a set of input features to their corresponding output targets. This is done through a series of individual decisions where each decision represents a node (or branching) of the tree.}
+    %     \only<2>{Random forests are an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time. }
+    % \end{block} 
+    \end{frame}
 
 
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.15]{img/decision_tree2.png}
+        \caption{Schematic View of Decision Tree}
+    \end{figure}
+    \end{frame}
 
-
-
-
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.15]{img/Random_Forest.png}
+        \caption{Schematic View of Random Forest}
+    \end{figure}
+    \end{frame}
+%----------------------------------------------------------------------------------------
+%   Methodology
+%----------------------------------------------------------------------------------------
+\section{Methodology}
+\subsection{Data Preprocessing}
+\subsection{Desicion Tree Algorithm}
+\subsection{Random Forest Algorithm}
+\subsection{Validation}
+%----------------------------------------------------------------------------------------
+%   Literature Survey
+%----------------------------------------------------------------------------------------
+\section{Literature Survey}
+%----------------------------------------------------------------------------------------
+%   Results & Disscusion
+%----------------------------------------------------------------------------------------
+\section{Results and Disscusion}
 
 
 %----------------------------------------------------------------------------------------
@@ -127,5 +211,4 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \end{frame}
 
 %----------------------------------------------------------------------------------------
-
 \end{document} 
