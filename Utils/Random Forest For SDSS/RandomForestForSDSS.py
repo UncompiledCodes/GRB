@@ -24,7 +24,7 @@ features_train, features_test, targets_train, targets_test = train_test_split(
 # Training the Random Forest Regression model on the whole dataset
 from sklearn.ensemble import RandomForestRegressor
 
-regressor = RandomForestRegressor(n_estimators=10, random_state=0)
+regressor = RandomForestRegressor(n_estimators=500,max_depth=(16),random_state=0)
 regressor.fit(features_train, targets_train)
 
 # Predicting a new result
@@ -33,29 +33,34 @@ from scipy.sparse import csr_matrix
 # A = csr_matrix([[features[:]]])
 # x=np.array(0.31476,0.0571,0.28991,0.07192)
 y_pred = regressor.predict(features_test)
+
 #K-fold
 from sklearn.model_selection import cross_val_score
 accuracies = cross_val_score(estimator = regressor, X = features_train, y = targets_train, cv = 10)
 print("Accuracy: {} %".format(accuracies.mean()*100))
 print("Standard Deviation: {} %".format(accuracies.std()*100))
 
+#R2
+from sklearn.metrics import r2_score
+
+M1_tst_unorm_R2 = r2_score(targets_test, y_pred)
 # Applying Grid Search to find the best model and the best parameters
 from sklearn.model_selection import GridSearchCV
 
-param_grid = {
-    'bootstrap': [True],
-    'max_depth': [16,17,18,19],
-    'n_estimators': [400,500]
-}
-#
+# param_grid = {
+#     'bootstrap': [True],
+#     'max_depth': [16,17,18,19],
+#     'n_estimators': [400,500]
+# }
+
 # Instantiate the grid search model
-grid_search = GridSearchCV(estimator = regressor, param_grid = param_grid, 
-                          cv = 10, n_jobs = -1, verbose = 2)
-grid_search = grid_search.fit(features_train, targets_train)
-best_accuracy = grid_search.best_score_
-best_parameters = grid_search.best_params_
-print("Best Accuracy: {:.2f} %".format(best_accuracy*100))
-print("Best Parameters:", best_parameters)
+# grid_search = GridSearchCV(estimator = regressor, param_grid = param_grid, 
+#                           cv = 10, n_jobs = -1, verbose = 2)
+# grid_search = grid_search.fit(features_train, targets_train)
+# best_accuracy = grid_search.best_score_
+# best_parameters = grid_search.best_params_
+# print("Best Accuracy: {:.2f} %".format(best_accuracy*100))
+# print("Best Parameters:", best_parameters)
 # Write a function that calculates the median of the differences between our predicted and actual values
 def median_diff(predicted, actual):
     return np.median(np.abs(y_pred[:] - targets_test[:]))
