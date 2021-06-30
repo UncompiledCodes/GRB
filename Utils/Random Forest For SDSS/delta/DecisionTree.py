@@ -5,6 +5,7 @@ import pandas as pd
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
+from sklearn.metrics import r2_score
 
 # Importing the dataset
 
@@ -22,7 +23,7 @@ def dtree(data):
         features, targets, test_size=0.2, random_state=0
     )
     # initialize model
-    regressor = DecisionTreeRegressor(max_depth=(19), random_state=0)
+    regressor = DecisionTreeRegressor(random_state=0)
     regressor.fit(features_train, targets_train)
     # get the predicted_redshifts
     y_pred = regressor.predict(features_test)
@@ -47,6 +48,9 @@ def plot_tree(data):
     plt.show()
 
 
+def R2(targets_test,y_pred):
+    R2 = r2_score(targets_test, y_pred)
+    return R2
 def main_tree(data):
     y_pred, targets_test, accuracies = dtree(data)
     diff = median_diff(y_pred, targets_test)
