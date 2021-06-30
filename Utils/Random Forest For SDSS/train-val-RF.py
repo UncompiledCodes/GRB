@@ -66,9 +66,10 @@ plt.ylabel("median")
 plt.title("train-val")
 
 # Set any axis limits
-plt.xlim(0, 30)
-plt.ylim(0, 0.04)
-plt.yticks(np.arange(0, 0.04, 0.002))
+plt.xlim(0, 700)
+plt.xticks(np.arange(0, 700, 100))
+plt.ylim(0, 0.10)
+plt.yticks(np.arange(0, 0.10, 0.005))
 plt.grid()
 plt.savefig("train-val", dpi=1200)
 
