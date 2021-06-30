@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # train\valid
-# n_estimator_sample=[10,70,100,300,500,600,700]
-# max_depths_sample=[10,14,15,16,17,19,25,70,150]
-n_estimator_sample = [10, 20]
-max_depths_sample = [10, 14]
+n_estimator_sample = [10, 70, 100, 300, 500, 600, 700]
+max_depths_sample = [10, 14, 15, 16, 17, 19, 25, 70, 150]
+# n_estimator_sample = [10, 20]
+# max_depths_sample = [10, 14]
 # Importing the dataset
 data = np.load("sdss_galaxy_colors.npy")
 
