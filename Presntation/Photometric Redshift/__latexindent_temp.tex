@@ -80,6 +80,7 @@
 
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
 \usepackage{caption}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -162,43 +163,151 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
         \pause
         \item[Random Forest] \hfill \\ Random forests are an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time. 
     \end{description}
-    % \begin{itemize}[<+->]
-    %     \item Decision Tree
-    %     \item Random Forest
-    % \end{itemize}
-
-    % \begin{block}{}
-    %     \only<1>{Decision trees map a set of input features to their corresponding output targets. This is done through a series of individual decisions where each decision represents a node (or branching) of the tree.}
-    %     \only<2>{Random forests are an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time. }
-    % \end{block} 
     \end{frame}
-
-
 \begin{frame}
     \begin{figure}
         \includegraphics[scale=0.15]{img/decision_tree2.png}
-        \caption{Schematic View of Decision Tree}
+        \caption*{Schematic View of Decision Tree}
     \end{figure}
     \end{frame}
 
 \begin{frame}
     \begin{figure}
         \includegraphics[scale=0.15]{img/Random_Forest.png}
-        \caption{Schematic View of Random Forest}
+        \caption*{Schematic View of Random Forest}
     \end{figure}
     \end{frame}
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.35]{img/decision_tree_intuition.png}
+        \caption*{Desicion Tree Intuition}
+    \end{figure}
+    \end{frame}
+%----------------------------------------------------------------------------------------
+%   Literature Survey
+%----------------------------------------------------------------------------------------
+\section{Literature Survey}
 %----------------------------------------------------------------------------------------
 %   Methodology
 %----------------------------------------------------------------------------------------
 \section{Methodology}
 \subsection{Data Preprocessing}
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.3]{img/sdss_csv_data.png}
+        \caption*{SDSS Data Sample}
+    \end{figure}
+    \end{frame}
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.2]{img/redshiftug.png}
+        % \caption*{SDSS Data Sample}
+    \end{figure}
+    \end{frame}
 \subsection{Desicion Tree Algorithm}
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.25]{img/decision_tree3.png}
+        \caption*{Exploring the Output Tree}
+    \end{figure}
+    \end{frame}
+
+
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.4]{img/overfiting_tree.png}
+        \caption*{Setting a Maximum Depth}
+    \end{figure}
+    \end{frame}
+\begin{frame}
+    \begin{table}[ht]\
+        \caption*{The Effect of Training Set Size} % title of Table
+        \centering % used for centering table
+        \begin{tabular}{c c c c} % centered columns (4 columns)
+        \hline\hline %inserts double horizontal lines
+        Training Galaxies & Median Diff \\ [0.5ex] % inserts table
+        %heading
+        \hline % inserts single horizontal line
+        50 & 0.048  \\ % inserting body of the table
+        500 & 0.026  \\
+        5000 & 0.023  \\
+        50000 & 0.022  \\ [1ex] % [1ex] adds vertical space
+        \hline %inserts single line
+        \\
+        \end{tabular}
+        \label{table:nonlin} % is used to refer this table in the text
+        \end{table}
+        \begin{equation}
+            m e d_{-} d i f f=\operatorname{median}\left(\left|Y_{\mathrm{i}, \text { pred }}-Y_{\mathrm{i}, \mathrm{act}}\right|\right)
+            \end{equation}
+    \end{frame}
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.5]{img/Tree_Result.png}
+        \caption*{KFold Cross Validated Predictions}
+    \end{figure}
+    \end{frame}
 \subsection{Random Forest Algorithm}
+\begin{frame}
+    \begin{columns}[onlytextwidth]
+    \begin{column}{.45\textwidth}
+        \begin{figure}
+            \includegraphics[width=\textwidth]{img/code1-edited.png}
+            \caption*{Building a Random Forest Regressor Model}
+        \end{figure}
+    \end{column}
+    \hfill
+    \begin{column}{.45\textwidth}
+        \begin{figure}
+            \includegraphics[width=\textwidth]{img/code2-edited.png}
+            \caption*{Optimizing the Random Forest Regressor Model}
+        \end{figure}
+    \end{column}
+    \end{columns}
+    \end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.7]{img/RF-Result.png}
+        \caption*{KFold Cross Validated Predictions}
+    \end{figure}
+    \end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.65]{img/train-val.png}
+        % \caption*{KFold Cross Validated Predictions}
+    \end{figure}
+    \end{frame}
 \subsection{Validation}
-%----------------------------------------------------------------------------------------
-%   Literature Survey
-%----------------------------------------------------------------------------------------
-\section{Literature Survey}
+\begin{frame}
+    \begin{figure}
+        \includegraphics[scale=0.65]{img/deltaZ.png}
+        % \caption*{KFold Cross Validated Predictions}
+    \end{figure}
+    \end{frame}
+\begin{frame}
+    \begin{table}[ht]\
+        \caption*{Parameters of Regression Modeling} % title of Table
+        \centering % used for centering table
+        \begin{tabular}{l l l} % centered columns (4 columns)
+        \hline\hline %inserts double horizontal lines
+         &Decision Tree & Random Forest\\ [0.5ex] % inserts table
+        %heading
+        \hline % inserts single horizontal line
+        Mean Accuracy& 52.19\%  & 73.34\%  \\ % inserting body of the table
+        Best Accuracy & 54\% & 76\%  \\
+        Max Depth & 19 & 16  \\
+        Number of Trees &  1 & 500  \\
+        Bootstrap &  True & True  \\
+        Standard Deviation &   6.27\% & 2.80\%  \\
+        R2 Squared &  0.54 & 0.76  \\
+        Median Diff &  0.17 & 0.17  \\ [1ex] % [1ex] adds vertical space
+        \hline %inserts single line
+        \\
+        \end{tabular}
+        \end{table}       
+        \end{frame}
 %----------------------------------------------------------------------------------------
 %   Results & Disscusion
 %----------------------------------------------------------------------------------------
@@ -212,3 +321,8 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 
 %----------------------------------------------------------------------------------------
 \end{document} 
+
+
+
+
+% Mean Accuracy & Best Accuracy & Max Depth & Number of Trees & Bootstrap & Standard Deviation & R2 Squared & Median Diff
