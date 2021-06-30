@@ -121,6 +121,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \section{Introduction}
 \subsection{Motivation}
 \begin{frame}
+ 	\frametitle{Astronomical Surveys, SDSS}
     \begin{columns}[onlytextwidth]
     \begin{column}{.45\textwidth}
         \begin{figure}
@@ -140,6 +141,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \end{frame}
 \subsection{Spectroscopic and Photometric Redshifts}
 \begin{frame}
+	\frametitle{What is Spectroscopy?}
     \begin{figure}
         \includegraphics[scale=0.35]{img/galaxy_spectrum.png}
     \end{figure}
@@ -149,6 +151,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \end{frame}
 \begin{frame}
     \begin{figure}
+	\frametitle{What is Photometry?}
         \includegraphics[scale=0.25]{img/sdss_plot.png}
     \end{figure}
     \begin{equation}
@@ -157,6 +160,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \end{frame}
 \subsection{Machine Learning}
 \begin{frame}
+	\frametitle{Regression Algorithms}
     \begin{description}
         \item[Decision Tree] \hfill \\ Decision trees map a set of input features to their corresponding output targets. This is done through a series of individual decisions where each decision represents a node (or branching) of the tree. 
         \\[0.2in]
@@ -165,6 +169,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \end{description}
     \end{frame}
 \begin{frame}
+	\frametitle{How does Decision Tree work?}
     \begin{figure}
         \includegraphics[scale=0.15]{img/decision_tree2.png}
         \caption*{Schematic View of Decision Tree}
@@ -172,12 +177,14 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \end{frame}
 
 \begin{frame}
+	\frametitle{How does Random Forest work?}
     \begin{figure}
         \includegraphics[scale=0.15]{img/Random_Forest.png}
         \caption*{Schematic View of Random Forest}
     \end{figure}
     \end{frame}
 \begin{frame}
+	\frametitle{Geometrical View of  Algorithm}
     \begin{figure}
         \includegraphics[scale=0.35]{img/decision_tree_intuition.png}
         \caption*{Desicion Tree Intuition}
@@ -204,19 +211,22 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \section{Methodology}
 \subsection{Data Preprocessing}
 \begin{frame}
+	\frametitle{Preparing the Dataset}
     \begin{figure}
         \includegraphics[scale=0.3]{img/sdss_csv_data.png}
         \caption*{SDSS Data Sample}
     \end{figure}
     \end{frame}
 \begin{frame}
+	\frametitle{Contour map of the redshifts}
     \begin{figure}
-        \includegraphics[scale=0.2]{img/redshiftug.png}
+        \includegraphics[scale=0.18]{img/redshiftug.png}
         % \caption*{SDSS Data Sample}
     \end{figure}
     \end{frame}
 \subsection{Desicion Tree Algorithm}
 \begin{frame}
+	\frametitle{Detailed overview of Decision Tree}
     \begin{figure}
         \includegraphics[scale=0.25]{img/decision_tree3.png}
         \caption*{Exploring the Output Tree}
@@ -225,12 +235,14 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 
 
 \begin{frame}
+	\frametitle{Optimizing process for Decision Tree}
     \begin{figure}
         \includegraphics[scale=0.4]{img/overfiting_tree.png}
         \caption*{Setting a Maximum Depth}
     \end{figure}
     \end{frame}
 \begin{frame}
+	\frametitle{Accuracy of the model}
     \begin{table}[ht]\
         \caption*{The Effect of Training Set Size} % title of Table
         \centering % used for centering table
@@ -253,6 +265,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
             \end{equation}
     \end{frame}
 \begin{frame}
+	\frametitle{Final Result of Decision Tree Algorithm}
     \begin{figure}
         \includegraphics[scale=0.5]{img/Tree_Result.png}
         \caption*{KFold Cross Validated Predictions}
@@ -260,6 +273,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \end{frame}
 \subsection{Random Forest Algorithm}
 \begin{frame}
+	\frametitle{Steps of  preparing Random Forest}
     \begin{columns}[onlytextwidth]
     \begin{column}{.45\textwidth}
         \begin{figure}
@@ -278,26 +292,30 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \end{frame}
 
 \begin{frame}
+	\frametitle{Final Result of Random Forest Algorithm}
     \begin{figure}
-        \includegraphics[scale=0.7]{img/RF-Result.png}
+        \includegraphics[scale=0.64]{img/RF-Result.png}
         \caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
 
 \begin{frame}
+	\frametitle{Optimization process}
     \begin{figure}
-        \includegraphics[scale=0.65]{img/train-val.png}
+        \includegraphics[scale=0.60]{img/train-val.png}
         % \caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
 \subsection{Validation}
 \begin{frame}
+	\frametitle{Cross-Validation of two algorithms}
     \begin{figure}
-        \includegraphics[scale=0.65]{img/deltaZ.png}
+        \includegraphics[scale=0.60]{img/deltaZ.png}
         % \caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
 \begin{frame}
+	\frametitle{Analytical Overview}
     \begin{table}[ht]\
         \caption*{Parameters of Regression Modeling} % title of Table
         \centering % used for centering table
