@@ -3,6 +3,7 @@
 # Importing the libraries
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.stats import gaussian_kde
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
@@ -34,9 +35,16 @@ def median_diff(predicted, actual):
 def plot_forest(data):
     # plot the results to see how well our model looks
     y_pred, targets_test = rforest(data)
-    plt.scatter(targets_test, y_pred, s=0.4)
-    plt.xlim((0, targets_test.max()))
-    plt.ylim((0, y_pred.max()))
+    cmap = plt.get_cmap("plasma")
+    xy = np.vstack([targets_test, y_pred])
+    z = gaussian_kde(xy)(xy)
+    # Create the plot with plt.scatter
+    plot = plt.scatter(targets_test, y_pred, c=z, cmap=cmap, s=0.4)
+
+    cb = plt.colorbar(plot)
+    # plt.scatter(targets_test, y_pred, s=0.4)
+    plt.xlim((0, targets_test.max() + 1))
+    plt.ylim((0, y_pred.max() + 1))
     plt.xlabel("Measured Redshift")
     plt.ylabel("Predicted Redshift")
     plt.savefig("plot/Forest_Result", dpi=1200)

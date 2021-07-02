@@ -1,7 +1,7 @@
 # Importing the libraries
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
+from scipy.stats import gaussian_kde
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
@@ -27,8 +27,10 @@ def dtree(data):
     regressor.fit(features_train, targets_train)
     # get the predicted_redshifts
     y_pred = regressor.predict(features_test)
-    
-    accuracies = cross_val_score(estimator = regressor, X = features_train, y = targets_train, cv = 10)
+
+    accuracies = cross_val_score(
+        estimator=regressor, X=features_train, y=targets_train, cv=10
+    )
 
     return [y_pred, targets_test, accuracies]
 
@@ -38,24 +40,30 @@ def median_diff(predicted, actual):
 
 
 def plot_tree(data):
-    y_pred, targets_test = dtree(data)
-    plt.scatter(targets_test, y_pred, s=0.4)
-    plt.xlim((0, targets_test.max()))
-    plt.ylim((0, y_pred.max()))
+    y_pred, targets_test, accuracies = dtree(data)
+    cmap = plt.get_cmap("plasma")
+    xy = np.vstack([targets_test, y_pred])
+    z = gaussian_kde(xy)(xy)
+    plot = plt.scatter(targets_test, y_pred, c=z, cmap=cmap, s=0.4)
+    plt.colorbar(plot)
+    plt.xlim((0, targets_test.max() + 1))
+    plt.ylim((0, y_pred.max() + 1))
     plt.xlabel("Measured Redshift")
     plt.ylabel("Predicted Redshift")
     plt.savefig("plot/Tree_Result", dpi=1200)
     plt.show()
 
 
-def R2(targets_test,y_pred):
+def R2(targets_test, y_pred):
     R2 = r2_score(targets_test, y_pred)
     return R2
+
+
 def main_tree(data):
     y_pred, targets_test, accuracies = dtree(data)
     diff = median_diff(y_pred, targets_test)
     print(f"Median difference of decision tree: {diff}")
-    print("Accuracy decision tree: {} %".format(accuracies.mean()*100))
-    print("Standard Deviation decision tree: {} %".format(accuracies.std()*100))
+    print("Accuracy decision tree: {} %".format(accuracies.mean() * 100))
+    print("Standard Deviation decision tree: {} %".format(accuracies.std() * 100))
     delta_tree = y_pred - targets_test
     return delta_tree
