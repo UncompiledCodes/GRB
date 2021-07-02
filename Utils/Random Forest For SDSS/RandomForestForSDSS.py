@@ -4,9 +4,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from scipy.stats import gaussian_kde
 
 # Importing the dataset
-data = np.load("sdss_galaxy_colors.npy")
+data = np.load("delta\data\sdss_galaxy_450000.npy")
 
 features = np.zeros(shape=(len(data), 4))
 features[:, 0] = data["u"] - data["g"]
@@ -24,7 +25,7 @@ features_train, features_test, targets_train, targets_test = train_test_split(
 # Training the Random Forest Regression model on the whole dataset
 from sklearn.ensemble import RandomForestRegressor
 
-regressor = RandomForestRegressor(n_estimators=500,max_depth=(16),random_state=0)
+regressor = RandomForestRegressor(n_estimators=500, max_depth=(16), random_state=0)
 regressor.fit(features_train, targets_train)
 
 # Predicting a new result
@@ -34,13 +35,16 @@ from scipy.sparse import csr_matrix
 # x=np.array(0.31476,0.0571,0.28991,0.07192)
 y_pred = regressor.predict(features_test)
 
-#K-fold
+# K-fold
 from sklearn.model_selection import cross_val_score
-accuracies = cross_val_score(estimator = regressor, X = features_train, y = targets_train, cv = 10)
-print("Accuracy: {} %".format(accuracies.mean()*100))
-print("Standard Deviation: {} %".format(accuracies.std()*100))
 
-#R2
+accuracies = cross_val_score(
+    estimator=regressor, X=features_train, y=targets_train, cv=10
+)
+print("Accuracy: {} %".format(accuracies.mean() * 100))
+print("Standard Deviation: {} %".format(accuracies.std() * 100))
+
+# R2
 from sklearn.metrics import r2_score
 
 M1_tst_unorm_R2 = r2_score(targets_test, y_pred)
@@ -54,7 +58,7 @@ from sklearn.model_selection import GridSearchCV
 # }
 
 # Instantiate the grid search model
-# grid_search = GridSearchCV(estimator = regressor, param_grid = param_grid, 
+# grid_search = GridSearchCV(estimator = regressor, param_grid = param_grid,
 #                           cv = 10, n_jobs = -1, verbose = 2)
 # grid_search = grid_search.fit(features_train, targets_train)
 # best_accuracy = grid_search.best_score_
@@ -67,15 +71,22 @@ def median_diff(predicted, actual):
 
 
 diff = median_diff(y_pred, targets_test)
-print("Median difference: {:0.3f}".format(diff))
+print("Median difference: {}".format(diff))
 
 # plot the results to see how well our model looks
-plt.scatter(targets_test, y_pred, s=0.4)
-plt.xlim((0, targets_test.max()))
-plt.ylim((0, y_pred.max()))
+cmap = plt.get_cmap("plasma")
+xy = np.vstack([targets_test, y_pred])
+z = gaussian_kde(xy)(xy)
+# Create the plot with plt.scatter
+plot = plt.scatter(targets_test, y_pred, c=z, cmap=cmap, s=0.4)
+
+cb = plt.colorbar(plot)
+# plt.scatter(targets_test, y_pred, s=0.4)
+plt.xlim((0, 3))
+plt.ylim((0, 3))
 plt.xlabel("Measured Redshift")
 plt.ylabel("Predicted Redshift")
-plt.savefig("RF-Result", dpi=1200)
+plt.savefig("delta/plot/Forest_Result", dpi=1200)
 plt.show()
 
 # Visualising the Random Forest Regression results (higher resolution)

@@ -23,7 +23,7 @@ def dtree(data):
         features, targets, test_size=0.2, random_state=0
     )
     # initialize model
-    regressor = DecisionTreeRegressor(random_state=0)
+    regressor = DecisionTreeRegressor(max_depth=19, random_state=0)
     regressor.fit(features_train, targets_train)
     # get the predicted_redshifts
     y_pred = regressor.predict(features_test)
@@ -41,13 +41,13 @@ def median_diff(predicted, actual):
 
 def plot_tree(data):
     y_pred, targets_test, accuracies = dtree(data)
-    cmap = plt.get_cmap("plasma")
+    cmap = plt.get_cmap("hot")
     xy = np.vstack([targets_test, y_pred])
     z = gaussian_kde(xy)(xy)
     plot = plt.scatter(targets_test, y_pred, c=z, cmap=cmap, s=0.4)
     plt.colorbar(plot)
-    plt.xlim((0, targets_test.max() + 1))
-    plt.ylim((0, y_pred.max() + 1))
+    plt.xlim((0, 3))
+    plt.ylim((0, 3))
     plt.xlabel("Measured Redshift")
     plt.ylabel("Predicted Redshift")
     plt.savefig("plot/Tree_Result", dpi=1200)
@@ -67,3 +67,23 @@ def main_tree(data):
     print("Standard Deviation decision tree: {} %".format(accuracies.std() * 100))
     delta_tree = y_pred - targets_test
     return delta_tree
+
+
+def run(data):
+    y_pred, targets_test, accuracies = dtree(data)
+    diff = median_diff(y_pred, targets_test)
+    print(f"Median difference of decision tree: {diff}")
+    print("Accuracy decision tree: {} %".format(accuracies.mean() * 100))
+    print("Standard Deviation decision tree: {} %".format(accuracies.std() * 100))
+    cmap = plt.get_cmap("hot")
+    xy = np.vstack([targets_test, y_pred])
+    z = gaussian_kde(xy)(xy)
+    plot = plt.scatter(targets_test, y_pred, c=z, cmap=cmap, s=0.4)
+    plt.colorbar(plot)
+    plt.xlim((0, 3))
+    plt.ylim((0, 3))
+    plt.xlabel("Measured Redshift")
+    plt.ylabel("Predicted Redshift")
+    plt.savefig("plot/Tree_Result", dpi=1200)
+    plt.show()
+    return [y_pred, targets_test]
