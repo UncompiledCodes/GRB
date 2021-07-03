@@ -82,6 +82,7 @@ def run(data):
     plt.colorbar(plot)
     plt.xlim((0, 3))
     plt.ylim((0, 3))
+    plt.clim(0,10)
     plt.xlabel("Measured Redshift")
     plt.ylabel("Predicted Redshift")
     plt.savefig("plot/Tree_Result", dpi=1200)
