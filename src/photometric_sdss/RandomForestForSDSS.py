@@ -7,7 +7,7 @@ import pandas as pd
 from scipy.stats import gaussian_kde
 
 # Importing the dataset
-data = np.load("delta\data\sdss_galaxy_450000.npy")
+data = np.load("sdss_galaxy_450000.npy")
 
 features = np.zeros(shape=(len(data), 4))
 features[:, 0] = data["u"] - data["g"]
@@ -25,7 +25,7 @@ features_train, features_test, targets_train, targets_test = train_test_split(
 # Training the Random Forest Regression model on the whole dataset
 from sklearn.ensemble import RandomForestRegressor
 
-regressor = RandomForestRegressor(n_estimators=500, max_depth=(16), random_state=0)
+regressor = RandomForestRegressor(n_estimators=5, max_depth=(16), random_state=0)
 regressor.fit(features_train, targets_train)
 
 # Predicting a new result
@@ -51,20 +51,20 @@ M1_tst_unorm_R2 = r2_score(targets_test, y_pred)
 # Applying Grid Search to find the best model and the best parameters
 from sklearn.model_selection import GridSearchCV
 
-# param_grid = {
-#     'bootstrap': [True],
-#     'max_depth': [16,17,18,19],
-#     'n_estimators': [400,500]
-# }
+param_grid = {
+    'bootstrap': [True],
+    'max_depth': [16,17,18,19,25],
+    'n_estimators': [200,500,600]
+}
 
-# Instantiate the grid search model
-# grid_search = GridSearchCV(estimator = regressor, param_grid = param_grid,
-#                           cv = 10, n_jobs = -1, verbose = 2)
-# grid_search = grid_search.fit(features_train, targets_train)
-# best_accuracy = grid_search.best_score_
-# best_parameters = grid_search.best_params_
-# print("Best Accuracy: {:.2f} %".format(best_accuracy*100))
-# print("Best Parameters:", best_parameters)
+#Instantiate the grid search model
+grid_search = GridSearchCV(estimator = regressor, param_grid = param_grid,
+                          cv = 10, n_jobs = -1, verbose = 2)
+grid_search = grid_search.fit(features_train, targets_train)
+best_accuracy = grid_search.best_score_
+best_parameters = grid_search.best_params_
+print("Best Accuracy: {:.2f} %".format(best_accuracy*100))
+print("Best Parameters:", best_parameters)
 # Write a function that calculates the median of the differences between our predicted and actual values
 def median_diff(predicted, actual):
     return np.median(np.abs(y_pred[:] - targets_test[:]))
@@ -80,14 +80,14 @@ z = gaussian_kde(xy)(xy)
 # Create the plot with plt.scatter
 plot = plt.scatter(targets_test, y_pred, c=z, cmap=cmap, s=0.4)
 
-cb = plt.colorbar(plot)
+#cb = plt.colorbar(plot)
 # plt.scatter(targets_test, y_pred, s=0.4)
-plt.xlim((0, 3))
-plt.ylim((0, 3))
-plt.xlabel("Measured Redshift")
-plt.ylabel("Predicted Redshift")
-plt.savefig("delta/plot/Forest_Result", dpi=1200)
-plt.show()
+# plt.xlim((0, 3))
+# plt.ylim((0, 3))
+# plt.xlabel("Measured Redshift")
+# plt.ylabel("Predicted Redshift")
+# plt.savefig("delta/plot/Forest_Result", dpi=1200)
+# plt.show()
 
 # Visualising the Random Forest Regression results (higher resolution)
 """X_grid = np.arange(min(X), max(X), 0.01)
@@ -100,5 +100,5 @@ plt.ylabel('Salary')
 plt.show()"""
 
 
-def main_forest():
-    return y_pred - targets_test
+# def main_forest():
+#     return y_pred - targets_test

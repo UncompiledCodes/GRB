@@ -207,6 +207,20 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
             \item Testing Set: 7000 Galaxies
         \end{itemize}
         \end{frame}
+
+\begin{frame}
+        \frametitle{Similar Research Results}
+        \begin{figure}
+\vspace*{-18mm}
+            \includegraphics[scale=0.37]{img/Litsurvey.png}
+\vspace*{-25mm}
+\begin{equation}
+\Delta Z_{\text {norm}}=\frac{Z_{\text {spec}}-Z_{phot}}{1+Z_{\text {spec}}}
+\end{equation}
+           % \caption*{Overview of Similar Researches}
+        \end{figure}
+     
+        \end{frame}
 %----------------------------------------------------------------------------------------
 %   Methodology
 %----------------------------------------------------------------------------------------
@@ -228,6 +242,14 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
         % \caption*{SDSS Data Sample}
     \end{figure}
     \end{frame}
+\begin{frame}
+	\frametitle{Redshift Distribution of Galaxies}
+    \begin{figure}
+        \includegraphics[scale=0.71]{img/Gal_distr.png}
+        % \caption*{SDSS Data Sample}
+    \end{figure}
+    \end{frame}
+
 \subsection{Desicion Tree Algorithm}
 \begin{frame}
 	\frametitle{Detailed overview of Decision Tree}
@@ -317,14 +339,14 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
          &Decision Tree & Random Forest\\ [0.5ex] % inserts table
         %heading
         \hline % inserts single horizontal line
-        Mean Accuracy& 52.19\%  & 73.34\%  \\ % inserting body of the table
+        Mean Accuracy& 67.96\%  & 81.01\%  \\ % inserting body of the table
         Best Accuracy & 54\% & 76\%  \\
         Max Depth & 19 & 16  \\
         Number of Trees &  1 & 500  \\
         Bootstrap &  True & True  \\
-        Standard Deviation &   6.27\% & 2.80\%  \\
+        Standard Deviation &   1.66\% & 0.69\%  \\
         R2 Squared &  0.54 & 0.76  \\
-        Median Diff &  0.17 & 0.17  \\ [1ex] % [1ex] adds vertical space
+        Median Diff &  0.017 & 0.017  \\ [1ex] % [1ex] adds vertical space
         \hline %inserts single line
         \\
         \end{tabular}
