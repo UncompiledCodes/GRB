@@ -82,6 +82,14 @@
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{booktabs}% http://ctan.org/pkg/booktabs
 \usepackage{caption}
+\usepackage{copyrightbox}
+
+\makeatletter
+\renewcommand{\CRB@setcopyrightfont}{%
+\usefont{T1}{phv}{m}{n}\fontsize{4}{4}\selectfont
+}
+\makeatother
+
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -121,27 +129,31 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \section{Introduction}
 \subsection{Motivation}
 \begin{frame}
+ 	\frametitle{Astronomical Surveys, SDSS}
     \begin{columns}[onlytextwidth]
     \begin{column}{.45\textwidth}
         \begin{figure}
-            \includegraphics[width=\textwidth]{img/sdss_galaxy_map.jpg}
+            \copyrightbox[r]{\includegraphics[width=\textwidth]{img/sdss_galaxy_map.jpg}}{Source of the image.}
             \caption*{SDSS Galaxy Map}
         \end{figure}
     \end{column}
     \hfill
     \begin{column}{.45\textwidth}
     \begin{itemize}
-        \item Possibility of Obtaining a Spectrum
-        \item Sophisticated ML Algorithm
-        \item Dark Energy and Dark Matter
+        \item Galactic Archaeology
+        \item Gas in the Galaxy
+        \item Star Forming Regions
+        \item Multi-Star and Planetary Systems
+        \item White Dwarfs
     \end{itemize}
     \end{column}
     \end{columns}
     \end{frame}
 \subsection{Spectroscopic and Photometric Redshifts}
 \begin{frame}
+	\frametitle{Measuring Redshift from Spectroscopy}
     \begin{figure}
-        \includegraphics[scale=0.35]{img/galaxy_spectrum.png}
+        \copyrightbox[r]{\includegraphics[scale=0.35]{img/Spectrum.png}}{Source of the image.}
     \end{figure}
     \begin{equation}
         \lambda_{obs} = (1+z)\lambda_{em}
@@ -149,7 +161,8 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \end{frame}
 \begin{frame}
     \begin{figure}
-        \includegraphics[scale=0.25]{img/sdss_plot.png}
+	\frametitle{Measuring Redshift from Photometry}
+    \copyrightbox[r]{\includegraphics[scale=0.25]{img/sdss_plot.png}}{Source of the image.}
     \end{figure}
     \begin{equation}
         u=m_{\text {ref }}-2.5 \log {10}\left[\int_{0}^{\infty} F(\lambda) S(\lambda) d \lambda\right]
@@ -157,6 +170,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \end{frame}
 \subsection{Machine Learning}
 \begin{frame}
+	\frametitle{Regression Algorithms}
     \begin{description}
         \item[Decision Tree] \hfill \\ Decision trees map a set of input features to their corresponding output targets. This is done through a series of individual decisions where each decision represents a node (or branching) of the tree. 
         \\[0.2in]
@@ -165,21 +179,24 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \end{description}
     \end{frame}
 \begin{frame}
+	\frametitle{How does Decision Tree work?}
     \begin{figure}
-        \includegraphics[scale=0.15]{img/decision_tree2.png}
+        \copyrightbox[r]{\includegraphics[scale=0.25]{img/sdss_plot.png}}{Source of the image.}
         \caption*{Schematic View of Decision Tree}
     \end{figure}
     \end{frame}
 
 \begin{frame}
+	\frametitle{How does Random Forest work?}
     \begin{figure}
-        \includegraphics[scale=0.15]{img/Random_Forest.png}
+        \copyrightbox[r]{\includegraphics[scale=0.15]{img/Random_Forest.png}}{Source of the image.}
         \caption*{Schematic View of Random Forest}
     \end{figure}
     \end{frame}
 \begin{frame}
+	\frametitle{Geometrical View of  Algorithm}
     \begin{figure}
-        \includegraphics[scale=0.35]{img/decision_tree_intuition.png}
+        \copyrightbox[r]{\includegraphics[scale=0.35]{img/decision_tree_intuition.png}}{Source of the image.}
         \caption*{Desicion Tree Intuition}
     \end{figure}
     \end{frame}
@@ -190,7 +207,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
         \frametitle{ANN}
         \begin{figure}
-            \includegraphics[scale=0.3]{img/lit_survay.png}
+            \copyrightbox[r]{\includegraphics[scale=0.3]{img/lit_survay.png}}{Source of the image.}
             \caption*{ugriz Photometry}
         \end{figure}
         \begin{itemize}
@@ -198,39 +215,70 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
             \item Testing Set: 7000 Galaxies
         \end{itemize}
         \end{frame}
+
+\begin{frame}
+        \frametitle{Similar Research Results}
+        \begin{figure}
+\vspace*{-18mm}
+            \copyrightbox[b]{\includegraphics[scale=0.37]{img/Litsurvey.png}}{Source of the image.}
+\vspace*{-25mm}
+\begin{equation}
+\Delta Z_{\text {norm}}=\frac{Z_{\text {spec}}-Z_{phot}}{1+Z_{\text {spec}}}
+\end{equation}
+           % \caption*{Overview of Similar Researches}
+        \end{figure}
+     
+        \end{frame}
 %----------------------------------------------------------------------------------------
 %   Methodology
 %----------------------------------------------------------------------------------------
 \section{Methodology}
 \subsection{Data Preprocessing}
 \begin{frame}
+	\frametitle{Preparing the Dataset}
     \begin{figure}
-        \includegraphics[scale=0.3]{img/sdss_csv_data.png}
+        \copyrightbox[r]{\includegraphics[scale=0.2]{img/SDSS_imaging_camera.jpg}}{Source of the image.}
+        \copyrightbox[r]{\includegraphics[scale=0.5]{img/wavelengths.png}}{Source of the image.}
+        \copyrightbox[b]{\includegraphics[scale=0.3]{img/sdss_data.png}}{Source of the image.}
         \caption*{SDSS Data Sample}
     \end{figure}
     \end{frame}
 \begin{frame}
+	\frametitle{Contour map of the redshifts}
     \begin{figure}
-        \includegraphics[scale=0.2]{img/redshiftug.png}
+        \copyrightbox[r]{ \includegraphics[scale=0.18]{img/redshiftug.png}}{Source of the image.}
         % \caption*{SDSS Data Sample}
     \end{figure}
     \end{frame}
+\begin{frame}
+	\frametitle{Redshift Distribution of Galaxies}
+    \begin{figure}
+        \copyrightbox[r]{ \includegraphics[scale=0.71]{img/Gal_distr.png}}{Source of the image.}
+        
+        % \caption*{SDSS Data Sample}
+    \end{figure}
+    \end{frame}
+
 \subsection{Desicion Tree Algorithm}
 \begin{frame}
+	\frametitle{Detailed overview of Decision Tree}
     \begin{figure}
-        \includegraphics[scale=0.25]{img/decision_tree3.png}
-        \caption*{Exploring the Output Tree}
+        \copyrightbox[r]{\includegraphics[scale=0.25]{img/decision_tree.png}}{Source of the image.}
+        
+        %\caption*{Exploring the Output Tree}
     \end{figure}
     \end{frame}
 
 
 \begin{frame}
+	\frametitle{Optimizing process for Decision Tree}
     \begin{figure}
-        \includegraphics[scale=0.4]{img/overfiting_tree.png}
+        \copyrightbox[r]{\includegraphics[scale=0.4]{img/overfiting_tree.png}}{Source of the image.}
         \caption*{Setting a Maximum Depth}
     \end{figure}
     \end{frame}
 \begin{frame}
+	\frametitle{Accuracy of the model}
     \begin{table}[ht]\
         \caption*{The Effect of Training Set Size} % title of Table
         \centering % used for centering table
@@ -253,51 +301,49 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
             \end{equation}
     \end{frame}
 \begin{frame}
+	\frametitle{Final Result of Decision Tree Algorithm}
     \begin{figure}
-        \includegraphics[scale=0.5]{img/Tree_Result.png}
-        \caption*{KFold Cross Validated Predictions}
+        \copyrightbox[r]{\includegraphics[scale=0.6]{img/Tree_Result.png}}{Source of the image.}
+        
+        %\caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
 \subsection{Random Forest Algorithm}
 \begin{frame}
-    \begin{columns}[onlytextwidth]
-    \begin{column}{.45\textwidth}
-        \begin{figure}
-            \includegraphics[width=\textwidth]{img/code1-edited.png}
-            \caption*{Building a Random Forest Regressor Model}
-        \end{figure}
-    \end{column}
-    \hfill
-    \begin{column}{.45\textwidth}
-        \begin{figure}
-            \includegraphics[width=\textwidth]{img/code2-edited.png}
-            \caption*{Optimizing the Random Forest Regressor Model}
-        \end{figure}
-    \end{column}
-    \end{columns}
-    \end{frame}
-
-\begin{frame}
+	\frametitle{Steps of preparing Random Forest}
     \begin{figure}
-        \includegraphics[scale=0.7]{img/RF-Result.png}
-        \caption*{KFold Cross Validated Predictions}
+        \copyrightbox[b]{\includegraphics[scale=0.36]{img/Random_Forest_schematic.png}}{Source of the image.}
     \end{figure}
     \end{frame}
 
 \begin{frame}
+	\frametitle{Final Result of Random Forest Algorithm}
     \begin{figure}
-        \includegraphics[scale=0.65]{img/train-val.png}
+        \copyrightbox[r]{\includegraphics[scale=0.6]{img/Forest_Result.png}}{Source of the image.}
+        
+       % \caption*{KFold Cross Validated Predictions}
+    \end{figure}
+    \end{frame}
+
+\begin{frame}
+	\frametitle{Optimization process}
+    \begin{figure}
+        \copyrightbox[r]{\includegraphics[scale=0.60]{img/train-val.png}}{Source of the image.}
+        
         % \caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
 \subsection{Validation}
 \begin{frame}
+	\frametitle{Cross-Validation of two algorithms}
     \begin{figure}
-        \includegraphics[scale=0.65]{img/deltaZ.png}
+        \copyrightbox[r]{\includegraphics[scale=0.60]{img/deltaZ.png}}{Source of the image.}
+        
         % \caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
 \begin{frame}
+	\frametitle{Analytical Overview}
     \begin{table}[ht]\
         \caption*{Parameters of Regression Modeling} % title of Table
         \centering % used for centering table
@@ -306,14 +352,14 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
          &Decision Tree & Random Forest\\ [0.5ex] % inserts table
         %heading
         \hline % inserts single horizontal line
-        Mean Accuracy& 52.19\%  & 73.34\%  \\ % inserting body of the table
+        Mean Accuracy& 67.96\%  & 81.01\%  \\ % inserting body of the table
         Best Accuracy & 54\% & 76\%  \\
         Max Depth & 19 & 16  \\
         Number of Trees &  1 & 500  \\
         Bootstrap &  True & True  \\
-        Standard Deviation &   6.27\% & 2.80\%  \\
+        Standard Deviation &   1.66\% & 0.69\%  \\
         R2 Squared &  0.54 & 0.76  \\
-        Median Diff &  0.17 & 0.17  \\ [1ex] % [1ex] adds vertical space
+        Median Diff &  0.017 & 0.017  \\ [1ex] % [1ex] adds vertical space
         \hline %inserts single line
         \\
         \end{tabular}

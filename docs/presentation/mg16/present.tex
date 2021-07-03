@@ -82,6 +82,14 @@
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{booktabs}% http://ctan.org/pkg/booktabs
 \usepackage{caption}
+\usepackage{copyrightbox}
+
+\makeatletter
+\renewcommand{\CRB@setcopyrightfont}{%
+\usefont{T1}{phv}{m}{n}\fontsize{4}{4}\selectfont
+}
+\makeatother
+
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -125,7 +133,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
     \begin{columns}[onlytextwidth]
     \begin{column}{.45\textwidth}
         \begin{figure}
-            \includegraphics[width=\textwidth]{img/sdss_galaxy_map.jpg}
+            \copyrightbox[r]{\includegraphics[width=\textwidth]{img/sdss_galaxy_map.jpg}}{Source of the image.}
             \caption*{SDSS Galaxy Map}
         \end{figure}
     \end{column}
@@ -145,7 +153,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{Measuring Redshift from Spectroscopy}
     \begin{figure}
-        \includegraphics[scale=0.35]{img/Spectrum.png}
+        \copyrightbox[r]{\includegraphics[scale=0.35]{img/Spectrum.png}}{Source of the image.}
     \end{figure}
     \begin{equation}
         \lambda_{obs} = (1+z)\lambda_{em}
@@ -154,7 +162,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
     \begin{figure}
 	\frametitle{Measuring Redshift from Photometry}
-        \includegraphics[scale=0.25]{img/sdss_plot.png}
+    \copyrightbox[r]{\includegraphics[scale=0.25]{img/sdss_plot.png}}{Source of the image.}
     \end{figure}
     \begin{equation}
         u=m_{\text {ref }}-2.5 \log {10}\left[\int_{0}^{\infty} F(\lambda) S(\lambda) d \lambda\right]
@@ -173,7 +181,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{How does Decision Tree work?}
     \begin{figure}
-        \includegraphics[scale=0.15]{img/decision_tree2.png}
+        \copyrightbox[r]{\includegraphics[scale=0.25]{img/sdss_plot.png}}{Source of the image.}
         \caption*{Schematic View of Decision Tree}
     \end{figure}
     \end{frame}
@@ -181,14 +189,14 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{How does Random Forest work?}
     \begin{figure}
-        \includegraphics[scale=0.15]{img/Random_Forest.png}
+        \copyrightbox[r]{\includegraphics[scale=0.15]{img/Random_Forest.png}}{Source of the image.}
         \caption*{Schematic View of Random Forest}
     \end{figure}
     \end{frame}
 \begin{frame}
 	\frametitle{Geometrical View of  Algorithm}
     \begin{figure}
-        \includegraphics[scale=0.35]{img/decision_tree_intuition.png}
+        \copyrightbox[r]{\includegraphics[scale=0.35]{img/decision_tree_intuition.png}}{Source of the image.}
         \caption*{Desicion Tree Intuition}
     \end{figure}
     \end{frame}
@@ -199,7 +207,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
         \frametitle{ANN}
         \begin{figure}
-            \includegraphics[scale=0.3]{img/lit_survay.png}
+            \copyrightbox[r]{\includegraphics[scale=0.3]{img/lit_survay.png}}{Source of the image.}
             \caption*{ugriz Photometry}
         \end{figure}
         \begin{itemize}
@@ -212,7 +220,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
         \frametitle{Similar Research Results}
         \begin{figure}
 \vspace*{-18mm}
-            \includegraphics[scale=0.37]{img/Litsurvey.png}
+            \copyrightbox[b]{\includegraphics[scale=0.37]{img/Litsurvey.png}}{Source of the image.}
 \vspace*{-25mm}
 \begin{equation}
 \Delta Z_{\text {norm}}=\frac{Z_{\text {spec}}-Z_{phot}}{1+Z_{\text {spec}}}
@@ -229,23 +237,24 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{Preparing the Dataset}
     \begin{figure}
-	\includegraphics[scale=0.2]{img/SDSS_imaging_camera.jpg}
-	\includegraphics[scale=0.5]{img/wavelengths.png}
-        \includegraphics[scale=0.3]{img/sdss_data.png}
+        \copyrightbox[r]{\includegraphics[scale=0.2]{img/SDSS_imaging_camera.jpg}}{Source of the image.}
+        \copyrightbox[r]{\includegraphics[scale=0.5]{img/wavelengths.png}}{Source of the image.}
+        \copyrightbox[b]{\includegraphics[scale=0.3]{img/sdss_data.png}}{Source of the image.}
         \caption*{SDSS Data Sample}
     \end{figure}
     \end{frame}
 \begin{frame}
 	\frametitle{Contour map of the redshifts}
     \begin{figure}
-        \includegraphics[scale=0.18]{img/redshiftug.png}
+        \copyrightbox[r]{ \includegraphics[scale=0.18]{img/redshiftug.png}}{Source of the image.}
         % \caption*{SDSS Data Sample}
     \end{figure}
     \end{frame}
 \begin{frame}
 	\frametitle{Redshift Distribution of Galaxies}
     \begin{figure}
-        \includegraphics[scale=0.71]{img/Gal_distr.png}
+        \copyrightbox[r]{ \includegraphics[scale=0.71]{img/Gal_distr.png}}{Source of the image.}
+        
         % \caption*{SDSS Data Sample}
     \end{figure}
     \end{frame}
@@ -254,7 +263,8 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{Detailed overview of Decision Tree}
     \begin{figure}
-        \includegraphics[scale=0.25]{img/decision_tree.png}
+        \copyrightbox[r]{\includegraphics[scale=0.25]{img/decision_tree.png}}{Source of the image.}
+        
         %\caption*{Exploring the Output Tree}
     \end{figure}
     \end{frame}
@@ -263,7 +273,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{Optimizing process for Decision Tree}
     \begin{figure}
-        \includegraphics[scale=0.4]{img/overfiting_tree.png}
+        \copyrightbox[r]{\includegraphics[scale=0.4]{img/overfiting_tree.png}}{Source of the image.}
         \caption*{Setting a Maximum Depth}
     \end{figure}
     \end{frame}
@@ -293,7 +303,8 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{Final Result of Decision Tree Algorithm}
     \begin{figure}
-        \includegraphics[scale=0.6]{img/Tree_Result.png}
+        \copyrightbox[r]{\includegraphics[scale=0.6]{img/Tree_Result.png}}{Source of the image.}
+        
         %\caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
@@ -301,15 +312,15 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{Steps of preparing Random Forest}
     \begin{figure}
-        \includegraphics[scale=0.36]{img/Random_Forest_schematic.png}
-       
+        \copyrightbox[b]{\includegraphics[scale=0.36]{img/Random_Forest_schematic.png}}{Source of the image.}
     \end{figure}
     \end{frame}
 
 \begin{frame}
 	\frametitle{Final Result of Random Forest Algorithm}
     \begin{figure}
-        \includegraphics[scale=0.6]{img/Forest_Result.png}
+        \copyrightbox[r]{\includegraphics[scale=0.6]{img/Forest_Result.png}}{Source of the image.}
+        
        % \caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
@@ -317,7 +328,8 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{Optimization process}
     \begin{figure}
-        \includegraphics[scale=0.60]{img/train-val.png}
+        \copyrightbox[r]{\includegraphics[scale=0.60]{img/train-val.png}}{Source of the image.}
+        
         % \caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
@@ -325,7 +337,8 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{Cross-Validation of two algorithms}
     \begin{figure}
-        \includegraphics[scale=0.60]{img/deltaZ.png}
+        \copyrightbox[r]{\includegraphics[scale=0.60]{img/deltaZ.png}}{Source of the image.}
+        
         % \caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
