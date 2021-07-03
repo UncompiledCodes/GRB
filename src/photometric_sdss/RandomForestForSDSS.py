@@ -7,7 +7,7 @@ import pandas as pd
 from scipy.stats import gaussian_kde
 
 # Importing the dataset
-data = np.load("sdss_galaxy_450000.npy")
+data = np.load("data/sdss_galaxy_450000.npy")
 
 features = np.zeros(shape=(len(data), 4))
 features[:, 0] = data["u"] - data["g"]
@@ -36,13 +36,13 @@ from scipy.sparse import csr_matrix
 y_pred = regressor.predict(features_test)
 
 # K-fold
-from sklearn.model_selection import cross_val_score
+# from sklearn.model_selection import cross_val_score
 
-accuracies = cross_val_score(
-    estimator=regressor, X=features_train, y=targets_train, cv=10
-)
-print("Accuracy: {} %".format(accuracies.mean() * 100))
-print("Standard Deviation: {} %".format(accuracies.std() * 100))
+# accuracies = cross_val_score(
+#     estimator=regressor, X=features_train, y=targets_train, cv=10
+# )
+# print("Accuracy: {} %".format(accuracies.mean() * 100))
+# print("Standard Deviation: {} %".format(accuracies.std() * 100))
 
 # R2
 from sklearn.metrics import r2_score
@@ -53,7 +53,7 @@ from sklearn.model_selection import GridSearchCV
 
 param_grid = {
     'bootstrap': [True],
-    'max_depth': [16,17,18,19,25],
+    'max_depth': [16,19,25],
     'n_estimators': [200,500,600]
 }
 
