@@ -62,6 +62,9 @@ def R2(targets_test, y_pred):
 def main_tree(data):
     y_pred, targets_test, accuracies = dtree(data)
     diff = median_diff(y_pred, targets_test)
+    znorm=[]
+    znorm=(targets_test[:]-y_pred[:])/(targets_test[:] + 1)
+    print(np.mean(znorm))
     print(f"Median difference of decision tree: {diff}")
     print("Accuracy decision tree: {} %".format(accuracies.mean() * 100))
     print("Standard Deviation decision tree: {} %".format(accuracies.std() * 100))
