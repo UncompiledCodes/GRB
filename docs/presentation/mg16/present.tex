@@ -252,7 +252,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
             \includegraphics[scale=0.37]{img/Litsurvey.png}
 \vspace*{-25mm}
 \begin{equation}
-\Delta Z_{\text {norm}}=\frac{Z_{\text {spec}}-Z_{phot}}{1+Z_{\text {spec}}}
+    \overline{\Delta Z_{\text {norm}}}=\frac{Z_{\text {spec}}-Z_{phot}}{1+Z_{\text {spec}}}
 \end{equation}
            % \caption*{Overview of Similar Researches}
         \end{figure}
@@ -359,7 +359,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{Optimization process}
     \begin{figure}
-        \copyrightbox[r]{\includegraphics[scale=0.60]{img/train-val.png}}{Source of the image.}
+        \copyrightbox[r]{\includegraphics[scale=0.60]{img/train-val-by-depth.png}}{}
 
         % \caption*{KFold Cross Validated Predictions}
     \end{figure}
@@ -383,7 +383,8 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
         Bootstrap &  - & True  \\
         Standard Deviation &   1.66\% & 0.69\%  \\
         R2 Squared &  0.68 & 0.81  \\
-        Median Diff &  0.017 & 0.017  \\ [1ex] % [1ex] adds vertical space
+        Median Diff &  0.017 & 0.017  \\ % [1ex] adds vertical space
+        $\overline{\Delta Z_{\text {norm}}}$ &  0.016 & 0.001  \\ [1ex] % [1ex] adds vertical space
         \hline %inserts single line
         \\
         \end{tabular}
