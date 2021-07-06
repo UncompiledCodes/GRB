@@ -104,7 +104,7 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \medskip
 \textit{aidinmomtaz@ph.iut.ac.ir\\mhsalimi@ph.iut.ac.ir\\s.shakeri@iut.ac.ir} % Your email address
 }
-\date{July 7, 2021} % Date, can be changed to a custom date
+\date{MG-16, July 7, 2021} % Date, can be changed to a custom date
 \setbeamertemplate{caption}[numbered]
 \begin{document}
 
@@ -248,11 +248,11 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
         \frametitle{Similar Research Results}
         \begin{figure}
-\vspace*{-18mm}
-            \includegraphics[scale=0.37]{img/Litsurvey.png}
-\vspace*{-25mm}
+\vspace*{3mm}
+            \includegraphics[scale=0.35]{img/table.png}
+\vspace*{-5mm}
 \begin{equation}
-    \overline{\Delta Z_{\text {norm}}}=\frac{Z_{\text {spec}}-Z_{phot}}{1+Z_{\text {spec}}}
+    \overline{\Delta Z}_{\text {norm}}=\frac{Z_{\text {spec}}-Z_{phot}}{1+Z_{\text {spec}}}
 \end{equation}
            % \caption*{Overview of Similar Researches}
         \end{figure}
@@ -320,8 +320,8 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
         50 & 0.048  \\ % inserting body of the table
         500 & 0.026  \\
         5000 & 0.023  \\
-        50000 & 0.022  \\ [1ex] % [1ex] adds vertical space
-        449438 & 0.016 \\[1ex]
+        50000 & 0.022  \\  % [1ex] adds vertical space
+        400000 & 0.017 \\[1ex]
         \hline %inserts single line
         \\
         \end{tabular}
@@ -359,12 +359,12 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
 \begin{frame}
 	\frametitle{Optimization process}
     \begin{figure}
-        \copyrightbox[r]{\includegraphics[scale=0.60]{img/train-val-by-depth.png}}{}
+        \copyrightbox[r]{\includegraphics[scale=0.60]{img/max_depth_dt.png}}{}
 
         % \caption*{KFold Cross Validated Predictions}
     \end{figure}
     \end{frame}
-\subsection{Results and Discussion}
+\section{Results and Discussion}
 
 \begin{frame}
 	\frametitle{Analytical Overview}
@@ -378,22 +378,33 @@ Department of Physics, Isfahan University of Technology, Isfahan 84156-8311, Ira
         \hline % inserts single horizontal line
         Mean Accuracy& 67.96\%  & 81.01\%  \\ % inserting body of the table
         Best Accuracy & 68.07\% & 81.02\%  \\
-        Max Depth & 19 & 16  \\
+        Max Depth & 19 & 25  \\
         Number of Trees &  1 & 600  \\
         Bootstrap &  - & True  \\
         Standard Deviation &   1.66\% & 0.69\%  \\
         R2 Squared &  0.68 & 0.81  \\
-        Median Diff &  0.017 & 0.017  \\ % [1ex] adds vertical space
-        $\overline{\Delta Z_{\text {norm}}}$ &  0.016 & 0.001  \\ [1ex] % [1ex] adds vertical space
+        Median Diff &  0.017 & 0.016  \\ % [1ex] adds vertical space
+        $\overline{\Delta Z}_{\text {norm}}$ &  0.016 & 0.001  \\ [1ex] % [1ex] adds vertical space
         \hline %inserts single line
         \\
         \end{tabular}
         \end{table}
         \end{frame}
+\begin{frame}
+        \frametitle{Comparison}
+        \begin{figure}
+
+            \includegraphics[scale=0.37]{img/table2.png}
+
+
+           % \caption*{Overview of Similar Researches}
+        \end{figure}
+
+        \end{frame}
 %----------------------------------------------------------------------------------------
 %   Results & Disscusion
 %----------------------------------------------------------------------------------------
-\section{Results and Disscusion}
+
 \section{References}
 \begin{frame}
 \frametitle{References}
