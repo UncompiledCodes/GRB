@@ -63,5 +63,5 @@ if __name__ == "__main__":
   plt.xlabel("Maximum Tree Depth")
   plt.ylabel("Median of Differences")
   plt.legend()
-  plt.savefig("max_depth_dt", dpi=600)
+  plt.savefig("max_depth_dt", dpi=700)
   plt.show()
