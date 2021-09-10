@@ -10,8 +10,6 @@ astropy==4.2.1
     # via astroml
 click==8.0.1
     # via pip-tools
-colorama==0.4.4
-    # via click
 cycler==0.10.0
     # via matplotlib
 joblib==1.0.1
@@ -35,7 +33,7 @@ pandas==1.2.5
     # via -r requirements.in
 pep517==0.10.0
     # via pip-tools
-pillow==8.2.0
+pillow==8.3.2
     # via matplotlib
 pip-tools==6.2.0
     # via -r requirements.in
