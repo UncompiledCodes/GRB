@@ -50,7 +50,7 @@ def plot_tree(data):
     plt.ylim((0, 3))
     plt.xlabel("Measured Redshift")
     plt.ylabel("Predicted Redshift")
-    plt.savefig("plot/Tree_Result", dpi=1200)
+    plt.savefig("output/plot/Tree_Result", dpi=1200)
     plt.show()
 
 
@@ -62,8 +62,8 @@ def R2(targets_test, y_pred):
 def main_tree(data):
     y_pred, targets_test, accuracies = dtree(data)
     diff = median_diff(y_pred, targets_test)
-    znorm=[]
-    znorm=(targets_test[:]-y_pred[:])/(targets_test[:] + 1)
+    znorm = []
+    znorm = (targets_test[:] - y_pred[:]) / (targets_test[:] + 1)
     print(np.mean(znorm))
     print(f"Median difference of decision tree: {diff}")
     print("Accuracy decision tree: {} %".format(accuracies.mean() * 100))
@@ -85,9 +85,9 @@ def run(data):
     plt.colorbar(plot)
     plt.xlim((0, 3))
     plt.ylim((0, 3))
-    plt.clim(0,10)
+    plt.clim(0, 10)
     plt.xlabel("Measured Redshift")
     plt.ylabel("Predicted Redshift")
-    plt.savefig("plot/Tree_Result", dpi=1200)
+    plt.savefig("output/plot/Tree_Result", dpi=1200)
     plt.show()
     return [y_pred, targets_test]
