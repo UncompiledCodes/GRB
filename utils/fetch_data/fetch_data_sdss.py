@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 from astroML.datasets.tools import sql_query
-from npy2csv.npy2csv import npy2csv
+from utils.npy2csv import npy2csv
 
 NOBJECTS = 1000000
 
