@@ -26,13 +26,3 @@ _ = tree.plot_tree(
     feature_names=["u-g", "g-r", "r-i", "i-z"],
 )
 fig.savefig("../output/plot/decistion_tree_viz.png")
-
-
-viz = dtreeviz(
-    regressor,
-    features_test,
-    targets_test,
-    target_name="target",
-    feature_names=["u-g", "g-r", "r-i", "i-z"],
-)
-viz
