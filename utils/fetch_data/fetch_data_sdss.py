@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 from astroML.datasets.tools import sql_query
-from utils.npy2csv import npy2csv
+#from utils.npy2csv import npy2csv
 
 NOBJECTS = 1000000
 
@@ -41,6 +41,6 @@ if sys.version_info[0] >= 3:
 data = np.genfromtxt(output, **kwargs)
 np.save(f"data\sdss\sdss_galaxy_{NOBJECTS}.npy", data)
 
-npy2csv(f"data\sdss\sdss_galaxy_{NOBJECTS}.npy")
+#npy2csv(f"data\sdss\sdss_galaxy_{NOBJECTS}.npy")
 # data = fetch_sdss_galaxy_colors(download_if_missing=False)
 # np.save("sdss_galaxy.npy", data)
