@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 if __name__ == "__main__":
     data = np.load("data/sdss_galaxy_450000.npy")
     # Get a colour map
-    cmap = plt.get_cmap("YlOrRd")
+    cmap = plt.get_cmap("Purples")
 
     # Define our colour indexes u-g and r-i
     u_g = data["u"] - data["g"]
