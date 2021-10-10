@@ -1,7 +1,15 @@
 import pandas as pd
 dfIn = pd.read_csv("sdss_galaxy_450000.csv")
-count=dfIn["specClass"]
+
+        
+dfOut = dfIn.drop(dfIn[dfIn['specClass'] == 'GALAXY'].index)
 j=0
-for i in count:
-    if i=="QSO":
+gg=dfOut['redshift']
+for i in gg:
+    if i>=2.25:
         j+=1
+
+# outputFilePath = 'output.xlsx'
+    
+# dfOut.to_excel(outputFilePath, index=False)
+       
