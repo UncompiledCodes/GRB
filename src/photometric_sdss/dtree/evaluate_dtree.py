@@ -52,7 +52,7 @@ def accuracy_by_treedepth(features, targets, depths):
 
 if __name__ == "__main__":
     # data = np.load("data/sdss_galaxy_450000.npy")
-    data=pd.read_csv("../data/output4.csv")
+    data=pd.read_csv("../data/output_under2.csv")
     features, targets = get_features_targets(data)
 
     # Generate several depths to test

@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 
 # Complete the following to make the plot
 if __name__ == "__main__":
-    data = pd.read_csv("data/output4.csv")
+    data = pd.read_csv("data/output_under2.csv")
     # Get a colour map
     cmap = plt.get_cmap("Greens")
 

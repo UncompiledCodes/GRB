@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 size, scale = 1000, 10
-df = pd.read_csv("data/output4.csv")
+df = pd.read_csv("data/output_under2.csv")
 
 ax = df["redshift"].plot.hist(grid=False, bins=200, rwidth=0.9, color="#607c8e")
 
