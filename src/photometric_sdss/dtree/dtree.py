@@ -6,6 +6,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import r2_score
+import pandas as pd
 
 # Importing the dataset
 
@@ -23,7 +24,7 @@ def dtree(data):
         features, targets, test_size=0.2, random_state=0
     )
     # initialize model
-    regressor = DecisionTreeRegressor(max_depth=19, random_state=0)
+    regressor = DecisionTreeRegressor(max_depth=17, random_state=0)
     regressor.fit(features_train, targets_train)
     # get the predicted_redshifts
     y_pred = regressor.predict(features_test)
@@ -83,11 +84,11 @@ def run(data):
     z = gaussian_kde(xy)(xy)
     plot = plt.scatter(targets_test, y_pred, c=z, cmap=cmap, s=0.4)
     plt.colorbar(plot)
-    plt.xlim((0, 3))
-    plt.ylim((0, 3))
+    plt.xlim((0, 2))
+    plt.ylim((0, 2))
     plt.clim(0, 10)
     plt.xlabel("Measured Redshift")
     plt.ylabel("Predicted Redshift")
-    plt.savefig("output/plot/Tree_Result", dpi=1200)
+    plt.savefig("Tree_Result", dpi=700)
     plt.show()
     return [y_pred, targets_test]

@@ -1,0 +1,4 @@
+-0.00531084890609602 mean of delta z
+Median difference of decision tree: 0.015535507880124179
+Accuracy decision tree: 84.16482962847066 %
+Standard Deviation decision tree: 0.7019667025835683 %

@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from matplotlib import pyplot as plt
 from sklearn.tree import DecisionTreeRegressor
 
@@ -50,7 +51,8 @@ def accuracy_by_treedepth(features, targets, depths):
 
 
 if __name__ == "__main__":
-    data = np.load("data/sdss_galaxy_450000.npy")
+    # data = np.load("data/sdss_galaxy_450000.npy")
+    data=pd.read_csv("../data/output4.csv")
     features, targets = get_features_targets(data)
 
     # Generate several depths to test
@@ -72,5 +74,5 @@ if __name__ == "__main__":
     plt.xlabel("Maximum Tree Depth")
     plt.ylabel("Median of Differences")
     plt.legend()
-    plt.savefig("output/plot/max_depth_dt", dpi=700)
+    plt.savefig("max_depth_dt", dpi=700)
     plt.show()
