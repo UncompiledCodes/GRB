@@ -34,11 +34,11 @@ def dtree(data):
     )
     
     df = pd.DataFrame(y_pred)
-    df.to_csv('y_pred',index=False)
+    df.to_csv('y_pred.csv',index=False)
     df = pd.DataFrame(targets_test)
-    df.to_csv("targets_test",index=False)
+    df.to_csv("targets_test.csv",index=False)
     
-     return [y_pred, targets_test, accuracies]
+    return [y_pred, targets_test, accuracies]
 
 
 def median_diff(predicted, actual):
