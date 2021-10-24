@@ -33,6 +33,9 @@ def dtree(data):
         estimator=regressor, X=features_train, y=targets_train, cv=10
     )
 
+    np.savetxt("y_pred",y_pred, delimiter=",")
+    np.savetxt("targets_test",targets_test, delimiter=",")
+
     return [y_pred, targets_test, accuracies]
 
 
