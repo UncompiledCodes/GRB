@@ -32,11 +32,13 @@ def dtree(data):
     accuracies = cross_val_score(
         estimator=regressor, X=features_train, y=targets_train, cv=10
     )
-
-    np.savetxt("y_pred",y_pred, delimiter=",")
-    np.savetxt("targets_test",targets_test, delimiter=",")
-
-    return [y_pred, targets_test, accuracies]
+    
+    df = pd.DataFrame(y_pred)
+    df.to_csv('y_pred',index=False)
+    df = pd.DataFrame(targets_test)
+    df.to_csv("targets_test",index=False)
+    
+     return [y_pred, targets_test, accuracies]
 
 
 def median_diff(predicted, actual):
