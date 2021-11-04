@@ -21,7 +21,7 @@ def rforest(data):
         features, targets, test_size=0.2, random_state=0
     )
     # Training the Random Forest Regression model on the whole dataset
-    regressor = RandomForestRegressor(n_estimators=19, random_state=0)
+    regressor = RandomForestRegressor(n_estimators=600, max_depth=13, random_state=0)
     regressor.fit(features_train, targets_train)
 
     y_pred = regressor.predict(features_test)
@@ -54,6 +54,13 @@ def plot_forest(data):
 def main_forest(data):
     y_pred, targets_test = rforest(data)
     diff = median_diff(y_pred, targets_test)
+    znorm = []
+    znorm = (targets_test[:] - y_pred[:]) / (targets_test[:] + 1)
+    print(np.mean(znorm))
+    df = pd.DataFrame(znorm)
+    df.to_csv('znormrforest.csv',index=False)
+    df = pd.DataFrame(targets_test)
+    df.to_csv('specz.csv',index=False)
     print(f"Median difference of random forest: {diff}")
     delta_forest = y_pred - targets_test
     return delta_forest
