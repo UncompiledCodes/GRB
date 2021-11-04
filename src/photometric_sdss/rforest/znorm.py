@@ -17,7 +17,7 @@ for i in range(87000):
 deltazaverage = np.mean(znorm)
 print(deltazaverage)
 dfOut = pd.DataFrame(znorm)
-dfOut.to_excel("znormdata.xlsx", index=False)
+dfOut.to_csv("znormdata.csv", index=False)
 
 
 size, scale = 1000, 10
