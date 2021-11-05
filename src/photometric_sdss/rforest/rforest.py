@@ -21,7 +21,7 @@ def rforest(data):
         features, targets, test_size=0.2, random_state=0
     )
     # Training the Random Forest Regression model on the whole dataset
-    regressor = RandomForestRegressor(n_estimators=600, max_depth=25, random_state=0)
+    regressor = RandomForestRegressor(n_estimators=600, max_depth=13, random_state=0)
     regressor.fit(features_train, targets_train)
 
     y_pred = regressor.predict(features_test)
@@ -43,11 +43,11 @@ def plot_forest(y_pred,targets_test):
 
     cb = plt.colorbar(plot)
     # plt.scatter(targets_test, y_pred, s=0.4)
-    plt.xlim((0, targets_test.max()))
-    plt.ylim((0, targets_test.max()))
+    plt.xlim(0, 2)
+    plt.ylim(0, 2)
     plt.xlabel("Measured Redshift")
     plt.ylabel("Predicted Redshift")
-    plt.savefig("Forest_Result_total", dpi=800)
+    plt.savefig("Forest_Result_under2", dpi=800)
     plt.show()
 
 
