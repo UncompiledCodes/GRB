@@ -1,0 +1,3 @@
+Median difference: 0.015474812157695347
+Best Accuracy: 91%
+deltaznorm=-0.005597824143848549

@@ -7,7 +7,7 @@ import pandas as pd
 from scipy.stats import gaussian_kde
 
 # Importing the dataset
-data = np.load("data/sdss_galaxy_450000.npy")
+data = pd.read_csv("../data/output_under2.csv")
 
 features = np.zeros(shape=(len(data), 4))
 features[:, 0] = data["u"] - data["g"]
@@ -53,8 +53,8 @@ from sklearn.model_selection import GridSearchCV
 
 param_grid = {
     'bootstrap': [True],
-    'max_depth': [16,19,25],
-    'n_estimators': [200,500,600]
+    'max_depth': [10,13,16,20,25],
+    'n_estimators': [100,200,300,400,500,600]
 }
 
 #Instantiate the grid search model

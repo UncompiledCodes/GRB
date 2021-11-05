@@ -21,7 +21,7 @@ def rforest(data):
         features, targets, test_size=0.2, random_state=0
     )
     # Training the Random Forest Regression model on the whole dataset
-    regressor = RandomForestRegressor(n_estimators=600, max_depth=13, random_state=0)
+    regressor = RandomForestRegressor(n_estimators=600, max_depth=25, random_state=0)
     regressor.fit(features_train, targets_train)
 
     y_pred = regressor.predict(features_test)
@@ -32,9 +32,9 @@ def median_diff(predicted, actual):
     return np.median(np.abs(predicted[:] - actual[:]))
 
 
-def plot_forest(data):
+def plot_forest(y_pred,targets_test):
     # plot the results to see how well our model looks
-    y_pred, targets_test = rforest(data)
+    
     cmap = plt.get_cmap("plasma")
     xy = np.vstack([targets_test, y_pred])
     z = gaussian_kde(xy)(xy)
@@ -43,24 +43,26 @@ def plot_forest(data):
 
     cb = plt.colorbar(plot)
     # plt.scatter(targets_test, y_pred, s=0.4)
-    plt.xlim((0, targets_test.max() + 1))
-    plt.ylim((0, y_pred.max() + 1))
+    plt.xlim((0, targets_test.max()))
+    plt.ylim((0, targets_test.max()))
     plt.xlabel("Measured Redshift")
     plt.ylabel("Predicted Redshift")
-    plt.savefig("output/plot/Forest_Result", dpi=1200)
+    plt.savefig("Forest_Result_total", dpi=800)
     plt.show()
 
 
-def main_forest(data):
-    y_pred, targets_test = rforest(data)
+def main_forest(y_pred,targets_test):
+    
     diff = median_diff(y_pred, targets_test)
     znorm = []
     znorm = (targets_test[:] - y_pred[:]) / (targets_test[:] + 1)
     print(np.mean(znorm))
-    df = pd.DataFrame(znorm)
-    df.to_csv('znormrforest.csv',index=False)
-    df = pd.DataFrame(targets_test)
-    df.to_csv('specz.csv',index=False)
+    deltaz=(targets_test[:] - y_pred[:])
+    df = pd.DataFrame(deltaz)
+    df.to_csv('deltaz_rforest_total.csv',index=False)
+    df1 = pd.DataFrame(targets_test)
+    df1.to_csv('specz_rforest_total.csv',index=False)
+    print(np.mean(znorm))
     print(f"Median difference of random forest: {diff}")
     delta_forest = y_pred - targets_test
     return delta_forest
