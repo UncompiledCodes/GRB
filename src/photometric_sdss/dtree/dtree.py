@@ -70,6 +70,11 @@ def main_tree(data):
     diff = median_diff(y_pred, targets_test)
     znorm = []
     znorm = (targets_test[:] - y_pred[:]) / (targets_test[:] + 1)
+    deltaz=(targets_test[:] - y_pred[:])
+    df = pd.DataFrame(deltaz)
+    df.to_csv('deltaz_dtree_total.csv',index=False)
+    df1 = pd.DataFrame(targets_test)
+    df1.to_csv('specz_dtree_total.csv',index=False)
     print(np.mean(znorm))
     print(f"Median difference of decision tree: {diff}")
     print("Accuracy decision tree: {} %".format(accuracies.mean() * 100))
