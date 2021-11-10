@@ -23,9 +23,9 @@ if __name__ == "__main__":
 
     # Define your axis labels and plot title
     plt.clim(0, 2.0)
-    plt.xlabel("Colour index  u-g")
-    plt.ylabel("Colour index  r-i")
-    plt.title("Redshift (colour) u-g versus r-i")
+    plt.xlabel("Color index  u-g")
+    plt.ylabel("Color index  r-i")
+    plt.title("Redshift (color) u-g versus r-i")
 
     # Set any axis limits
     plt.xlim(-0.5, 2.5)
